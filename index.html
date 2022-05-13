@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <header>
+      <h1>Play Tic, Tac, Toe</h1>
+      <p>Built with HTML, CSS, JavaScript and - of course - lots of love!</p>
+    </header>
+    <main>
+      <aside>
+        <!-- This is used to make overlays and sidebars. -->
+        <h2>Choose your name</h2>
+        <form>
+          <div>
+            <label for="player-name">Player name</label>
+            <input type="text" name="player-name" id="player-name" />
+          </div>
+          <div>
+            <button type="button">Cancel</button>
+            <!-- if we set the type to "button", the form does not submit anything. -->
+            <!-- this button sits here to cancel the submissions. -->
+            <button type="submit">Confirm</button>
+            <!-- the default type of a button inside a form is submit. -->
+            <!-- but we have added the type="submit" anyway for For ease of identification. -->
+          </div>
+        </form>
+      </aside>
+      <section id="game-configuraton">
+        <ol>
+          <li>
+            <article>
+              <h2>Player 1</h2>
+              <h3>PLAYER NAME</h3>
+              <!-- PLAYER NAME is just a place holder here. It will occupy by the real names of the players later. -->
+              <p>X</p>
+              <button>Edit</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h2>Player 2</h2>
+              <h3>PLAYER NAME</h3>
+              <!-- PLAYER NAME is just a place holder here. It will occupy by the real names of the players later. -->
+              <p>O</p>
+              <button>Edit</button>
+            </article>
+          </li>
+        </ol>
+        <button>
+          <!-- This button sits here to start a new game. -->
+          Start New Game
+        </button>
+      </section>
+      <section id="active-game">
+        <article>
+          <h3>You won, <span id="winner-name">PLAYER NAME</span>!</h3>
+          <p>Click "Start New Game" above to start a new game!</p>
+        </article>
+        <p>It's your turn <span id="active-player-name">PLAYER NAME</span>!</p>
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>
