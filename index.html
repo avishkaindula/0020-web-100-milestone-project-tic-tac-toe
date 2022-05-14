@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/styles.css" />
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <header>
+    <header id="main-header">
       <h1>Play Tic, Tac, Toe</h1>
       <p>Built with HTML, CSS, JavaScript and - of course - lots of love!</p>
     </header>
@@ -21,10 +28,10 @@
             <input type="text" name="player-name" id="player-name" />
           </div>
           <div>
-            <button type="button">Cancel</button>
+            <button type="button" class="btn btn-alt">Cancel</button>
             <!-- if we set the type to "button", the form does not submit anything. -->
             <!-- this button sits here to cancel the submissions. -->
-            <button type="submit">Confirm</button>
+            <button type="submit" class="btn">Confirm</button>
             <!-- the default type of a button inside a form is submit. -->
             <!-- but we have added the type="submit" anyway for For ease of identification. -->
           </div>
@@ -38,7 +45,7 @@
               <h3>PLAYER NAME</h3>
               <!-- PLAYER NAME is just a place holder here. It will occupy by the real names of the players later. -->
               <p>X</p>
-              <button>Edit</button>
+              <button class="btn btn-alt">Edit</button>
             </article>
           </li>
           <li>
@@ -47,11 +54,11 @@
               <h3>PLAYER NAME</h3>
               <!-- PLAYER NAME is just a place holder here. It will occupy by the real names of the players later. -->
               <p>O</p>
-              <button>Edit</button>
+              <button class="btn btn-alt">Edit</button>
             </article>
           </li>
         </ol>
-        <button>
+        <button class="btn">
           <!-- This button sits here to start a new game. -->
           Start New Game
         </button>
