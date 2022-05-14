@@ -11,15 +11,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/overlays.css" />
     <title>Tic Tac Toe</title>
   </head>
   <body>
+    <div id="backdrop"></div>
+    <!-- backdrop is a div we use to hide the other body functions when we open the aside. -->
+    <!-- This is just a div without content. -->
+    <!-- we make a backdrop from the div through the css code we write the overlays css file. -->
     <header id="main-header">
       <h1>Play Tic, Tac, Toe</h1>
       <p>Built with HTML, CSS, JavaScript and - of course - lots of love!</p>
     </header>
     <main>
-      <aside>
+      <aside class="modal">
         <!-- This is used to make overlays and sidebars. -->
         <h2>Choose your name</h2>
         <form>
