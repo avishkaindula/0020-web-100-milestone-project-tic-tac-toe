@@ -12,8 +12,12 @@
     />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/overlays.css" />
-    <link rel="stylesheet" href="styles/configuration.css">
-    <link rel="stylesheet" href="styles/game.css">
+    <link rel="stylesheet" href="styles/configuration.css" />
+    <link rel="stylesheet" href="styles/game.css" />
+    <script src="scripts/config.js" defer></script>
+    <script src="scripts/game.js" defer></script>
+    <script src="scripts/app.js" defer></script>
+    <!-- we should connect app.js after config.js and game.js -->
     <title>Tic Tac Toe</title>
   </head>
   <body>
@@ -35,7 +39,9 @@
             <input type="text" name="player-name" id="player-name" />
           </div>
           <div>
-            <button type="button" class="btn btn-alt">Cancel</button>
+            <button type="button" class="btn btn-alt" id="cancel-config-button">
+              Cancel
+            </button>
             <!-- if we set the type to "button", the form does not submit anything. -->
             <!-- this button sits here to cancel the submissions. -->
             <button type="submit" class="btn">Confirm</button>
@@ -52,7 +58,7 @@
               <h3>PLAYER NAME</h3>
               <!-- PLAYER NAME is just a place holder here. It will occupy by the real names of the players later. -->
               <p class="player-symbol">X</p>
-              <button class="btn btn-alt">Edit</button>
+              <button class="btn btn-alt" id="edit-player-1-btn">Edit</button>
             </article>
           </li>
           <li>
@@ -61,7 +67,7 @@
               <h3>PLAYER NAME</h3>
               <!-- PLAYER NAME is just a place holder here. It will occupy by the real names of the players later. -->
               <p class="player-symbol">O</p>
-              <button class="btn btn-alt">Edit</button>
+              <button class="btn btn-alt" id="edit-player-2-btn">Edit</button>
             </article>
           </li>
         </ol>
