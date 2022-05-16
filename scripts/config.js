@@ -6,6 +6,8 @@ function openPlayerConfig() {
 function closePlayerConfig() {
   playerConfigOverlayElement.style.display = "none";
   backdropElement.style.display = "none";
+  formElement.firstElementChild.classList.remove("error");
+  errorsOutputElement.textContent = "";
 }
 
 function savePlayerConfig(event) {
@@ -27,11 +29,28 @@ function savePlayerConfig(event) {
   // because event.target points at the HTML element (form element) that was responsible for the event.
   // Now this will automatically look for inputs inside the form.
 
-  const enteredPlayerName = formData.get("player-name");
+  // const enteredPlayerName = formData.get("player-name");
   // player-name is the value we've defined on the name attribute of the input element.
   // So that would be the identifier we need to get access to the entered input value.
   // get is a special method that's available on the formData.
   // And this is how we extract information from a form.
 
-  console.log(enteredPlayerName);
+  const enteredPlayerName = formData.get("player-name").trim();
+  // .get will give us a string because the input element will yield the value as a string.
+  // .trim() will trim excess white space.
+  // Which means if we have extra white spaces in front or after the name, it will get rid of that.
+  // but if we add only white spaces, the trim will erase all of those and gives nothing as a name.
+  // even if we add the "required" attribute to the input element, users can still be able to type only white spaces.
+  // so we need to find a way to validate that user didn't typed just empty spaces in the input field.
+
+  if (!enteredPlayerName) {
+    // This !enteredPlayerName a falsy value because empty string are considered as false in JS.
+    // Which means this if statement get executed when only blank spaces are typed inside the input field.
+    event.target.firstElementChild.classList.add("error");
+    errorsOutputElement.textContent = "Please enter a valid name!";
+    return;
+    // when you execute return like this, you stop the execution of the function in which you call it.
+    // So lines written "below the if statement" won't be executed when this "return" line is executed.
+    // So the if statement keeps giving the error message until we type a valid username.
+  }
 }

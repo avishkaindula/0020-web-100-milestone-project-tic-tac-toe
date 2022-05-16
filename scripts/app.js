@@ -3,6 +3,7 @@ const backdropElement = document.getElementById("backdrop");
 // even though app.js is linked after config.js, we can still write this constants in app.js.
 // It's possible because click event listener occurs "after" the above code lines are being executed.
 const formElement = document.querySelector("form");
+const errorsOutputElement = document.getElementById("config-errors");
 
 const editPlayer1BtnElement = document.getElementById("edit-player-1-btn");
 const editPlayer2BtnElement = document.getElementById("edit-player-2-btn");

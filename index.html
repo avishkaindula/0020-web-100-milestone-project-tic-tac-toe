@@ -36,13 +36,15 @@
         <form>
           <div class="form-control">
             <label for="player-name">Player name</label>
-            <input type="text" name="player-name" id="player-name" />
+            <input type="text" name="player-name" id="player-name" required />
           </div>
+          <p id="config-errors"></p>
           <div>
-            <button type="button" class="btn btn-alt" id="cancel-config-button">
+            <button type="reset" class="btn btn-alt" id="cancel-config-button">
               Cancel
             </button>
-            <!-- if we set the type to "button", the form does not submit anything. -->
+            <!-- if we set the type to "button", the form does not submit anything and wait there doing nothing. -->
+            <!-- if we set the type to "reset", the button will reset everything. -->
             <!-- this button sits here to cancel the submissions. -->
             <button type="submit" class="btn">Confirm</button>
             <!-- the default type of a button inside a form is submit. -->
