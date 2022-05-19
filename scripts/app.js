@@ -1,3 +1,13 @@
+let editedPlayer = 0;
+// editedPlayer is the value we use to define the value of the edit button pressed.
+
+const players = [
+  { name: "", symbol: "X" },
+  { name: "", symbol: "0" },
+];
+// These are two objects inside an array.
+// We use this array to hold the real names entered by the users internally in the code we write.
+
 const playerConfigOverlayElement = document.getElementById("config-overlay");
 const backdropElement = document.getElementById("backdrop");
 // even though app.js is linked after config.js, we can still write this constants in app.js.
@@ -28,5 +38,7 @@ formElement.addEventListener("submit", savePlayerConfig);
 // We are adding an event to the "overall form", not to the "submit button".
 // But it's actually gives the same result of adding a click event to the submit button.
 // So we can either add a click event to the submit button, or add a "submit" event to the overall form.
+// the form will automatically identify the type="submit" button as the button associated to
+// submit the data entered inside the form.
 // Submit is the built in event just like a click event.
 // So the savePlayerConfig function will execute when the form is submitted.
