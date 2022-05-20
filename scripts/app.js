@@ -13,6 +13,9 @@ const gameData = [
 let editedPlayer = 0;
 // editedPlayer is the value we use to define the value of the edit button pressed.
 let activePlayer = 0;
+let currentRound = 1;
+// currentRound is for finding out whether the game ends up in a draw.
+// If there's no winner even after 9 rounds, that means it ends up in a draw. (Hence there's only 9 boxes.)
 
 const players = [
   { name: "", symbol: "X" },

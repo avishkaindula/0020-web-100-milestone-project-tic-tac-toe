@@ -67,5 +67,103 @@ function selectGameField(event) {
 
   console.log(gameData);
 
+  const winnerId = checkForGameOver();
+  console.log(winnerId);
+
+  currentRound++;
+  // This means currentRound = currentRound + 1;
   switchPlayer();
 }
+
+function checkForGameOver() {
+  // --------------------------------------------------------------------------------------------------------
+  // if (gameData[0][0] === 1 && gameData[0][1] === 1 && gameData[0][2] === 1) {
+  //   return 1;
+  // }
+  // if (gameData[0][0] === 2 && gameData[0][1] === 2 && gameData[0][2] === 2) {
+  //   return 2;
+  // }
+  // These are some of the different data combinations that make a winner.
+  // But writing the code this way is overwhelming.
+  // So we need to find out an easy way of implementing this.
+
+  // ---------------------------------------------------------------------------------------------------------
+  // if (
+  //  gameData[0][0] > 0 &&
+  //  gameData[0][0] === gameData[0][1] &&
+  //  gameData[0][1] === gameData[0][2]
+  // ) {
+  // return gameData[0][0];
+  // We can simply use the gameData[0][0] as the return as it is also the winnerId.
+  // }
+  // This way we can find out whether the entire first row is occupied by a single player or not.
+  // We add > 0 at the beginning to make sure that the combination of 0, 0, 0 is not a valid combination.
+  // We could only have 1, 1, 1 or 2, 2, 2 instead.
+
+  // if (
+  //   gameData[1][0] > 0 &&
+  //   gameData[1][0] === gameData[1][1] &&
+  //   gameData[1][1] === gameData[1][2]
+  // ) {
+  //   return gameData[0][0];
+  // }
+
+  // if (
+  //   gameData[2][0] > 0 &&
+  //   gameData[2][0] === gameData[2][1] &&
+  //   gameData[2][1] === gameData[2][2]
+  // ) {
+  //   return gameData[0][0];
+  // }
+
+  // -----------------------------------------------------------------------------------------------------------
+  // We can shorten even the above code like this.
+  // This is how we check the "rows" for equality.
+  for (let i = 0; i < 3; i++) {
+    if (
+      gameData[i][0] > 0 &&
+      gameData[i][0] === gameData[i][1] &&
+      gameData[i][1] === gameData[i][2]
+    ) {
+      return gameData[i][0];
+    }
+  }
+
+  // This is how we check the "columns" for equality.
+  for (let i = 0; i < 3; i++) {
+    if (
+      gameData[0][i] > 0 &&
+      gameData[0][i] === gameData[1][i] &&
+      gameData[0][i] === gameData[2][i]
+    ) {
+      return gameData[0][i];
+    }
+  }
+
+  // Diagonal: Top left to bottom right
+  if (
+    gameData[0][0] > 0 &&
+    gameData[0][0] === gameData[1][1] &&
+    gameData[1][1] === gameData[2][2]
+  ) {
+    return gameData[0][0];
+  }
+
+  // Diagonal: Bottom left to top right
+  if (
+    gameData[2][0] > 0 &&
+    gameData[2][0] === gameData[1][1] &&
+    gameData[1][1] === gameData[0][2]
+  ) {
+    return gameData[2][0];
+  }
+
+  if (currentRound === 9) {
+    return -1;
+    // This gives winnerId as -1 if there's no winner after 9 rounds.
+    // (There cannot be more than 9 rounds. That's why we implement it here.)
+  }
+  return 0;
+  // This is how we signal that there's no winner.
+}
+// This is how we find out who the winner is.
