@@ -1,3 +1,15 @@
+const gameData = [
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+];
+// This is a two dimensional array.
+// These are arrays inside an array.
+// So now we set the different field values to this array whenever a box filed was selected.
+// So ultimately, this is where the selections of the user is stored.
+// We can replace the 0 with 1 or 2 and then find out who is the winner.
+// data-col and data-row are used to set the values in the array. 
+
 let editedPlayer = 0;
 // editedPlayer is the value we use to define the value of the edit button pressed.
 let activePlayer = 0;
