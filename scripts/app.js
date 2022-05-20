@@ -1,5 +1,6 @@
 let editedPlayer = 0;
 // editedPlayer is the value we use to define the value of the edit button pressed.
+let activePlayer = 0;
 
 const players = [
   { name: "", symbol: "X" },
@@ -14,10 +15,18 @@ const backdropElement = document.getElementById("backdrop");
 // It's possible because click event listener occurs "after" the above code lines are being executed.
 const formElement = document.querySelector("form");
 const errorsOutputElement = document.getElementById("config-errors");
+const gameAreaElement = document.getElementById("active-game");
+const activePlayerNameElement = document.getElementById("active-player-name");
 
 const editPlayer1BtnElement = document.getElementById("edit-player-1-btn");
 const editPlayer2BtnElement = document.getElementById("edit-player-2-btn");
 const cancelConfigBtnElement = document.getElementById("cancel-config-button");
+const startNewGameBtnElement = document.getElementById("start-game-btn");
+
+// const gameFieldElements = document.querySelectorAll("#game-board li");
+// This will select all the li items in the game-board.
+// But we can get access to the "ol" and do it another way like this.
+const gameBoardElement = document.getElementById("game-board");
 
 editPlayer1BtnElement.addEventListener("click", openPlayerConfig);
 // The listener function for this Event listener will be written on the config.js file, not in here.
@@ -42,3 +51,14 @@ formElement.addEventListener("submit", savePlayerConfig);
 // submit the data entered inside the form.
 // Submit is the built in event just like a click event.
 // So the savePlayerConfig function will execute when the form is submitted.
+
+startNewGameBtnElement.addEventListener("click", startNewGame);
+
+// for (const gameFieldElement of gameFieldElements) {
+//   gameFieldElement.addEventListener("click", selectGameField);
+// }
+// for of is a loop type used in arrays.
+// This loop will add an event listener to every box field clicked by the user.
+// We can do the same as above another way like below.
+gameBoardElement.addEventListener("click", selectGameField);
+// But if we click the gap between the box fields, the program clashes and displays a single "X" mark or "0" mark.
