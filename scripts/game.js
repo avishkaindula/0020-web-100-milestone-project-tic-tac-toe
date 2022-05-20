@@ -1,3 +1,29 @@
+function resetGameStatus() {
+  activePlayer = 0;
+  currentRound = 1;
+  gameIsOver = false;
+  gameOverElement.firstElementChild.innerHTML =
+    "You won, <span id=\"winner-name\">PLAYER NAME</span>!";
+  gameOverElement.style.display = "none";
+
+  let gameBoardIndex = 0;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      gameData[i][j] = 0;
+      const gameBoardItemElement = gameBoardElement.children[gameBoardIndex];
+      gameBoardItemElement.textContent = "";
+      gameBoardItemElement.classList.remove("disabled");
+      gameBoardIndex++;
+    }
+    // This is a nested loop.
+    // We name our second helper variable as j.
+    // Now we are looping through all the items in gameData.
+    // So we can reset gameData from here.
+    // And we can reset the signs in the Game board from this as well.
+  }
+}
+// This is how we reset the game after the game is over.
+
 function startNewGame() {
   if (players[0].name === "" || players[1].name === "") {
     alert("Please set custom player names for both players!");
@@ -5,6 +31,9 @@ function startNewGame() {
     // return code means that the below code won't get executed if the "if statement" get executed.
   }
   // The above code prevents users from starting new games if they haven't provide valid usernames.
+
+  resetGameStatus();
+
   activePlayerNameElement.textContent = players[activePlayer].name;
   gameAreaElement.style.display = "block";
 }
@@ -20,7 +49,7 @@ function switchPlayer() {
 // This is how we switch the player between "X" and "0".
 
 function selectGameField(event) {
-  if (event.target.tagName !== "LI") {
+  if (event.target.tagName !== "LI" || gameIsOver) {
     return;
   }
   // tagName shows the items inside the target element.
@@ -30,6 +59,11 @@ function selectGameField(event) {
   // event is like a "common" term for parents and also the children of the target element.
   // So the event can represent either "OL" or "LI" as it's target elements.
   // That's why we need to prevent event from selecting OL instead of LI like this.
+  // This code also prevents users from selecting boxes even after the game is over.
+  // It does that if gameIsOver === true.
+  // But we can write just "gameIsOver" instead of "gameIsOver === true" as it's a boolean value.
+  // The if statements get executed if the boolean values are true.
+  // That's why we can just write "gameIsOver" instead of "gameIsOver === true" and expect the same result.
 
   const selectedField = event.target;
 
@@ -65,10 +99,11 @@ function selectGameField(event) {
   // But we need to add 1 to the first player and 2 to the second player in the gameData two dimensional array.
   // So that we add + 1 in this code.
 
-  console.log(gameData);
-
   const winnerId = checkForGameOver();
-  console.log(winnerId);
+
+  if (winnerId !== 0) {
+    endGame(winnerId);
+  }
 
   currentRound++;
   // This means currentRound = currentRound + 1;
@@ -164,6 +199,23 @@ function checkForGameOver() {
     // (There cannot be more than 9 rounds. That's why we implement it here.)
   }
   return 0;
-  // This is how we signal that there's no winner.
+  // This is how we signal that neither of the above has happened.
+  // We cannot technically have 0 as the result instead of -1, 1 or 2 but we've added it anyways.
 }
 // This is how we find out who the winner is.
+
+function endGame(winnerId) {
+  gameIsOver = true;
+  gameOverElement.style.display = "block";
+  // This will show the game over element if the game is over.
+
+  if (winnerId > 0) {
+    // winnerId > 0 means that we have a winner.
+    const winnerName = players[winnerId - 1].name;
+    gameOverElement.firstElementChild.firstElementChild.textContent =
+      winnerName;
+  } else {
+    gameOverElement.firstElementChild.textContent = "It's a draw!";
+    // This else code get executed if winnerId = -1
+  }
+}

@@ -8,7 +8,7 @@ const gameData = [
 // So now we set the different field values to this array whenever a box filed was selected.
 // So ultimately, this is where the selections of the user is stored.
 // We can replace the 0 with 1 or 2 and then find out who is the winner.
-// data-col and data-row are used to set the values in the array. 
+// data-col and data-row are used to set the values in the array.
 
 let editedPlayer = 0;
 // editedPlayer is the value we use to define the value of the edit button pressed.
@@ -16,6 +16,7 @@ let activePlayer = 0;
 let currentRound = 1;
 // currentRound is for finding out whether the game ends up in a draw.
 // If there's no winner even after 9 rounds, that means it ends up in a draw. (Hence there's only 9 boxes.)
+let gameIsOver = false;
 
 const players = [
   { name: "", symbol: "X" },
@@ -32,6 +33,7 @@ const formElement = document.querySelector("form");
 const errorsOutputElement = document.getElementById("config-errors");
 const gameAreaElement = document.getElementById("active-game");
 const activePlayerNameElement = document.getElementById("active-player-name");
+const gameOverElement = document.getElementById("game-over");
 
 const editPlayer1BtnElement = document.getElementById("edit-player-1-btn");
 const editPlayer2BtnElement = document.getElementById("edit-player-2-btn");
@@ -77,3 +79,4 @@ startNewGameBtnElement.addEventListener("click", startNewGame);
 // We can do the same as above another way like below.
 gameBoardElement.addEventListener("click", selectGameField);
 // But if we click the gap between the box fields, the program clashes and displays a single "X" mark or "0" mark.
+
